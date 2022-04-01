@@ -1,0 +1,135 @@
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(#ecc100, #ffdd44);
+}
+
+.title{
+    font-size: 85px;
+    color: rgb(0, 66, 124);
+    animation: flipTitle 1.5s;
+}
+
+@keyframes flipTitle{
+    from{
+        transform: rotateX(90deg);
+    }
+    to{
+        transform: rotateX(0deg);
+    }
+}
+
+.containerInput{
+    background-color: rgba(255,255,255,0.5);
+    padding: 15px;
+    margin: 34px 0;
+    display: flex;
+    border-radius: 3px;
+    box-shadow: 1px 3px 8px rgba(0,0,0,0.9);
+}
+
+.containerInput input{
+    background-color: transparent;
+    border: 0;
+    font-size: 20px;
+    color: rgb(0, 48, 90);
+    outline: none;
+    margin-right: 8px;
+}
+
+.containerInput input::placeholder{
+    color: rgb(0, 48, 90);
+}
+
+.buttonSearch {
+    border-radius: 10px;
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.buttonSearch:hover{
+    transform: scale(1.3);
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    padding: 15px 5px 5px 25px;
+    flex-direction: column;
+    background-color: rgb(0, 66, 124);
+    border-radius: 2px;
+    width: 500px;
+    box-shadow: 5px 15px 40px rgba(0,0,0,0.9);
+    color: aliceblue;
+}
+
+.main h2{
+    margin: 18px 0 60px;
+    font-size: 50px;
+}
+
+.main span{
+    margin-bottom: 13px;
+    font-weight: 700;
+}
+
+.main .underBar{
+    display: flex;
+    flex-direction: row;
+}
+
+.main .underBar .bairro{
+    flex-grow: 5;    
+}
+
+.main .underBar .city{
+    flex-grow: 4;
+}
+
+.main .underBar .sep{
+    flex-grow: 1;
+}
+
+.main .underBar .compl{
+    col: red;
+}
+
+@media (max-width: 620px){
+    .title{
+        font-size: 60px;
+    }
+
+    .main h2{
+        font-size: 28px;
+    }
+
+    .main{
+        width: 80%;
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 450px){
+    .title{
+        font-size: 42px;
+    }
+
+    .main h2{
+        font-size: 25px;
+    }
+
+    .main{
+        width: 85%;
+        min-height: 230px;
+        font-size: 12px;
+    }
+}
