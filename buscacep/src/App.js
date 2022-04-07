@@ -10,7 +10,7 @@ function App() {
 
   async function handleSearch(){
     
-    if(input === ''){
+    while(input === ''){
       alert("CEP em branco!")
       return;
     }
