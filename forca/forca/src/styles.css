@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  p {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  table {
+    margin: 2rem auto;
+    border-collapse: collapse;
+    width: 50%;
+  }
+  
+  th, td {
+    border: 2px solid #fff;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  
+  thead {
+    background-color: #555;
+  }
+  
+  th {
+    font-size: 2rem;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #444;
+  }
+  
+  tbody tr:nth-child(odd) {
+    background-color: #333;
+  }
+  
+  td {
+    font-size: 1.5rem;
+  }
+  
+  #word {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  
+  #guesses {
+    margin-top: 2rem;
+  }
+  
+  button {
+    font-size: 2rem;
+    margin: 1rem;
+    padding: 1rem 2rem;
+    background-color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #333;
+  }
+  
+  button:hover:not([disabled]) {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+  }
+  
+  button:disabled {
+    background-color: #555;
+    color: #777;
+    cursor: not-allowed;
+    border: 2px solid #777;
+  }
+  
