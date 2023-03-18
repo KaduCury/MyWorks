@@ -1,3 +1,11 @@
+//contar apenas quando teclado letras
+//parar de contar as tentativas quando chegar a zero
+//incluir funcionalidade de escolher o número de letras da palavra para adivinhar
+//ainda tem bugs referentes a acentos gráficos e cedílha
+//melhorar a responsividade em smartphones
+//incluir o uso do teclado nativo em smartphones
+//incluir imagens da forca conforme vai errando
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles.css';
