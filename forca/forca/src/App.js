@@ -1,10 +1,12 @@
-//contar apenas quando teclado letras
-//parar de contar as tentativas quando chegar a zero
+// * contar apenas quando teclado letras
+// * parar de contar as tentativas quando chegar a zero
+//incluir um botão para começar o jogo
 //incluir funcionalidade de escolher o número de letras da palavra para adivinhar
 //ainda tem bugs referentes a acentos gráficos e cedílha
 //melhorar a responsividade em smartphones
 //incluir o uso do teclado nativo em smartphones
 //incluir imagens da forca conforme vai errando
+//incluir contador de visitas na página
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -37,6 +39,10 @@ const App = () => {
   }, []);
 
   const handleGuess = (letter) => {
+    if (tries <= 0) {
+      return; // não faz nada se não tiver mais tentativas
+    }
+
     if (usedLetters.includes(letter)) {
       alert('Essa letra já foi utilizada, tente outra!');
     } else {
@@ -69,9 +75,10 @@ const App = () => {
   };
 
   const handleKeyDown = (event) => {
+    const keyCode = event.keyCode;
+    if (keyCode >= 65 && keyCode <= 90) {
     const letter = event.key.toLowerCase();
-    if (/[a-z]/.test(letter)) {
-      handleGuess(letter);
+    handleGuess(letter);
     }
   };
 
