@@ -80,29 +80,10 @@ const App = () => {
     }
   };
 
-  const handleTouch = (event) => {
-    event.preventDefault();
-    const touchX = event.touches[0].clientX;
-    const touchY = event.touches[0].clientY;
-    const guessArea = document.getElementById('guesses').getBoundingClientRect();
-    if (touchX >= guessArea.left && touchX <= guessArea.right && touchY >= guessArea.top && touchY <= guessArea.bottom) {
-      const letters = document.querySelectorAll('#guesses button');
-      letters.forEach((letter) => {
-        const letterArea = letter.getBoundingClientRect();
-        if (touchX >= letterArea.left && touchX <= letterArea.right && touchY >= letterArea.top && touchY <= letterArea.bottom) {
-          const chosenLetter = letter.innerHTML.toLowerCase();
-          handleGuess(chosenLetter);
-        }
-      });
-    }
-  };
-
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('touchstart', handleTouch);
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('touchstart', handleTouch);
     };
   });
 
@@ -113,7 +94,7 @@ const App = () => {
       <p>Você tem {tries} tentativas restantes.</p>
       <p>Letras já utilizadas: {usedLetters.join(', ')}</p>
       {tries > 0 && hiddenWord.includes('_') && (
-        <div id="guesses" autoComplete="off" onTouchStart={handleTouch}>
+        <div id="guesses">
           <p>Chute uma letra:</p>
           {[...Array(26)].map((_, i) => {
             const letter = String.fromCharCode(97 + i);
