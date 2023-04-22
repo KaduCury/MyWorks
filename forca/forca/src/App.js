@@ -18,6 +18,7 @@ const App = () => {
   const [tries, setTries] = useState(6);
   const [usedLetters, setUsedLetters] = useState([]);
   const [ranking, setRanking] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     axios.get(API_URL)
@@ -34,6 +35,20 @@ const App = () => {
     if (storedRanking) {
       setRanking(JSON.parse(storedRanking));
     }
+  }, []);
+
+  const checkIfMobile = () => {
+    if (window.innerWidth < 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  };
+
+  useEffect(() => {
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
   const handleGuess = (letter) => {
@@ -75,8 +90,17 @@ const App = () => {
   const handleKeyDown = (event) => {
     const keyCode = event.keyCode;
     if (keyCode >= 65 && keyCode <= 90) {
-    const letter = event.key.toLowerCase();
-    handleGuess(letter);
+      const letter = event.key.toLowerCase();
+      handleGuess(letter);
+    } else if (isMobile && keyCode === 13) { // 13 é o código da tecla Enter
+      const input = document.getElementById('letter-input');
+      if (input) {
+        const letter = input.value.toLowerCase();
+        if (letter) {
+          handleGuess(letter);
+          input.value = '';
+        }
+      }
     }
   };
 
@@ -95,16 +119,24 @@ const App = () => {
       <p>Letras já utilizadas: {usedLetters.join(', ')}</p>
       {tries > 0 && hiddenWord.includes('_') && (
         <div id="guesses">
-          <p>Chute uma letra:</p>
-          {[...Array(26)].map((_, i) => {
+        <p>Chute uma letra:</p>
+        {isMobile ? (
+          <input type="text" id="letter-input" placeholder="Digite uma letra" maxLength="1" />
+        ) : (
+          [...Array(26)].map((_, i) => {
             const letter = String.fromCharCode(97 + i);
             return (
-              <button key={i} onClick={() => handleGuess(letter)} disabled={!hiddenWord.includes('_')} type="button">
+              <button
+                key={i}
+                onClick={() => handleGuess(letter)}
+                disabled={!hiddenWord.includes('_')}
+              >
                 {letter}
               </button>
             );
-          })}
-        </div>
+          })
+        )}
+      </div>
       )}
       <h2>Ranking</h2>
       <table>
