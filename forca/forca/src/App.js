@@ -99,7 +99,7 @@ const App = () => {
           {[...Array(26)].map((_, i) => {
             const letter = String.fromCharCode(97 + i);
             return (
-              <button key={i} onClick={() => handleGuess(letter)} disabled={!hiddenWord.includes('_')}>
+              <button key={i} onClick={() => handleGuess(letter)} disabled={!hiddenWord.includes('_')} type="button">
                 {letter}
               </button>
             );
