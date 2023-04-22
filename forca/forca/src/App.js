@@ -113,7 +113,7 @@ const App = () => {
       <p>Você tem {tries} tentativas restantes.</p>
       <p>Letras já utilizadas: {usedLetters.join(', ')}</p>
       {tries > 0 && hiddenWord.includes('_') && (
-        <div id="guesses">
+        <div id="guesses" autoComplete="off" onTouchStart={handleTouch}>
           <p>Chute uma letra:</p>
           {[...Array(26)].map((_, i) => {
             const letter = String.fromCharCode(97 + i);
